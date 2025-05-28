@@ -119,6 +119,29 @@ export const useProducts = () => {
     setProducts((prev) => [...prev, newProduct]);
   };
 
+  const updateProduct = (updatedProduct: Product) => {
+    setProducts((prev) =>
+      prev.map((product) =>
+        product.id === updatedProduct.id ? updatedProduct : product,
+      ),
+    );
+  };
+
+  const deleteProduct = (productId: number) => {
+    setProducts((prev) => prev.filter((product) => product.id !== productId));
+    setNotifications((prev) => prev.filter((id) => id !== productId));
+  };
+
+  const toggleProductStock = (productId: number) => {
+    setProducts((prev) =>
+      prev.map((product) =>
+        product.id === productId
+          ? { ...product, inStock: !product.inStock }
+          : product,
+      ),
+    );
+  };
+
   return {
     products,
     filteredProducts,
@@ -132,6 +155,9 @@ export const useProducts = () => {
     notifications,
     addNotification,
     addProduct,
+    updateProduct,
+    deleteProduct,
+    toggleProductStock,
     setProducts,
   };
 };

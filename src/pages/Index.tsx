@@ -4,6 +4,7 @@ import ProductCard from "@/components/ProductCard";
 import SearchBar from "@/components/SearchBar";
 import CategoryFilter from "@/components/CategoryFilter";
 import AuthModal from "@/components/AuthModal";
+import AdminControls from "@/components/AdminControls";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 
@@ -17,6 +18,10 @@ const Index = () => {
     setSelectedCategory,
     notifications,
     addNotification,
+    addProduct,
+    updateProduct,
+    deleteProduct,
+    toggleProductStock,
   } = useProducts();
 
   const { user, isAuthModalOpen, setIsAuthModalOpen, login, logout } =
